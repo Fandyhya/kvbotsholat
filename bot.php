@@ -9,8 +9,8 @@ Modified @ Farzain - zFz
 require_once('./line_class.php');
 require_once('./unirest-php-master/src/Unirest.php');
 
-$channelAccessToken = 'YOUR-CHANNEL-ACCESS-TOKEN'; //sesuaikan 
-$channelSecret = 'YOUR-CHANNEL-SECRET-CODE';//sesuaikan
+$channelAccessToken = 'l6Slk7EmaIdxPLJQq9XLa3rxq5o34XdluBYhaHMw0jPhddYRP9RTBKNpuOdRfyUlzxp+o6ff0He2KUTfe48CBVmiOXngNSyEnNesS7iqnpmhGnnlxtNIxZs7P3f7zriuxUdSRNPk9tBL9Y/66aTpTQdB04t89/1O/w1cDnyilFU='; //sesuaikan 
+$channelSecret = 'd9d9646080b7ed88f4e518cd4289a4ee';//sesuaikan
 
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 
@@ -69,7 +69,7 @@ function shalat($keyword) {
 
 //show menu, saat join dan command /menu
 if ($type == 'join' || $command == '/menu') {
-    $text = "Assalamualaikum Kakak, aku adalah bot jadwal shalat, silahkan ketik\n\n/shalat <nama tempat>\n\nnanti aku bakalan kasih tahu jam berapa waktunya shalat ^_^";
+    $text = "Assalamualaikum Kakak, silahkan ketik\n\n/shalat <nama tempat>\n\nnanti aku bakalan kasih tahu jam berapa waktunya shalat ^_^";
     $balas = array(
         'replyToken' => $replyToken,
         'messages' => array(
@@ -81,36 +81,7 @@ if ($type == 'join' || $command == '/menu') {
     );
 }
 
-//pesan bergambar
-if($message['type']=='text') {
-	    if ($command == '/shalat') {
 
-        $result = shalat($options);
-        $balas = array(
-            'replyToken' => $replyToken,
-            'messages' => array(
-                array(
-                    'type' => 'text',
-                    'text' => $result
-                )
-            )
-        );
-    }
-
-}else if($message['type']=='sticker')
-{	
-	$balas = array(
-							'replyToken' => $replyToken,														
-							'messages' => array(
-								array(
-										'type' => 'text',									
-										'text' => 'Makasih Kak Stikernya ^_^'										
-									
-									)
-							)
-						);
-						
-}
 if (isset($balas)) {
     $result = json_encode($balas);
 //$result = ob_get_clean();
